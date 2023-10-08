@@ -1,18 +1,13 @@
-## Getting Started
+## Ejercicios de Ejemplo de primer parcial de PROGRAMACION II
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Aca hay ejercicios que se van a ir haciendo en base a los temas del primer parcial que son los siguientes. 
 
-## Folder Structure
+Los temas del primer parcial son: 
 
-The workspace contains two folders by default, where:
+- Cargar datos
+- Mostrar todo los datos
+- Buscar máximos y mínimos
+- Buscar por cierto criterio
+- Mostrar datos filtrados
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
