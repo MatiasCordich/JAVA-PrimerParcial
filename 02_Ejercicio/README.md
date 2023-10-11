@@ -1,18 +1,21 @@
-## Getting Started
+## Ejercicio 02
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Nombre del proyecto: Pokedex
+Fecha: 9/10/2023
+Materias: Programacion II (JAVA)
 
-## Folder Structure
+## Estructura del proyecto
 
-The workspace contains two folders by default, where:
+- `main`: archivo principal para iniciar el programa donde incluiremos nuestras dependencias para que funcione el programa.
+- `menuPokemon`: en esta carpeta se encuentra las funcionalidades del menu de la pokedex
+- `modelos`: en esta carpeta se encuentra el modelo de la clase Pokemon
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Temas que incluye el proyecto
+- cargar objetos a una lista (Crear y cargar un Pokemon a la lista)
+- mostar los objetos de dicha lista (Mostrar toda la lista con los Pokemones cargados)
+- buscar los maximos y minimos de cierto valor especifico (Buscar el pokemon con mayor y menor valor de ataque)
+- buscar por un criterio especifico (Buscar Pokemon por id)
+- comparacion de objetos (Comparar valores de ataque de dos pokemones simulando una batalla)
+- mostrar la lista filtrada por un criterio especifico (Pokemones por tipo)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
