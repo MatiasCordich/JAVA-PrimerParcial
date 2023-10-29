@@ -4,6 +4,9 @@ Trabajo practico final.
 Materia: Programación II (JAVA)
 Universidad: Universidad Nacional Lomas de Zamora
 Integrantes: 
+    - Alvarez, Alan
+    - Olivera, Abril
+    - Sio Cordich, Matias
 Fecha de entrega:
 
 ## Temas
