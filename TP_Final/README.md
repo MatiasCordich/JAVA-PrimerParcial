@@ -18,7 +18,7 @@ Los artículos deberán contener cuanto mínimo los siguientes datos: Código de
 
 2. Usuarios: Para utilizar el sistema, se deberá en primer lugar ingresar con un usuario el cual, cuanto mínimo, posea un nombre de usuario y una contraseña.
 Los mismos deberán ser catalogados en Cliente y Empleado.
-(Solo los empleados podrán acceder al ABM de Artículos)
+(Solo los empleados podrán acceder al ABM de Artículos).
 
 3. Carrito de compra: Se deberá poder ver el listado de artículos en el sistema, agregarlos a un carrito, calcular su precio total y generar una factura.
 Una vez terminada la venta, el usuario deberá poder completar la compra. La cantidad comprada, deberá verse reflejada automáticamente en el stock.
