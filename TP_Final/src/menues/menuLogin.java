@@ -12,7 +12,7 @@ import modelos.Usuario;
  * 
  */
 
-public class menuLogin {
+public class MenuLogin {
 
     // Atributos
     private Scanner sc;
@@ -20,7 +20,7 @@ public class menuLogin {
     ArrayList<Usuario> listaUsuarios;
 
     // Constructor
-    public menuLogin(Scanner sc, ArrayList<Usuario> listaUsuarios) {
+    public MenuLogin(Scanner sc, ArrayList<Usuario> listaUsuarios) {
         this.sc = sc;
         this.listaUsuarios = listaUsuarios;
     }
@@ -30,7 +30,7 @@ public class menuLogin {
 
         // Inicio el menu de iniciar
         System.out.println("------- LOGIN -------");
-        System.out.println("Bienvenido/a al sistema de registro de usuarios");
+        System.out.println("Bienvenido/a al sistema de logueo de usuarios");
 
         // Pregunto si es la primera vez que ingreso al sistema
         System.out.print("Es la primera vez que ingresa? (si/no): ");
@@ -49,10 +49,8 @@ public class menuLogin {
 
         } else {
             // Si mi respuesta es 'no', es decir 'n', entonces procedo con el login
-            while (continuar) {
 
-                // Variable auxiliar
-                Usuario existeUsuario = null;
+            while (continuar) {
 
                 // Pido por pantalla la clave de usuario
                 System.out.print("Ingrese su nombre de usuario: ");
@@ -60,33 +58,57 @@ public class menuLogin {
                 System.out.print("Ingrese la contrasenia: ");
                 String constraseniaIngresada = sc.next();
 
-                // Recorro la lista de usuarios
-                for (Usuario usuario : listaUsuarios) {
+                // Busco el usuario que ingrese por medio de la terminal
 
-                    // Comparo el valor que ingrese por teclado con cada clave del usuario
-                    if (nombreUsuarioIngresado.equals(usuario.getNombre())) {
-                        // Si existe un usuario que me lo guarde en la variable auxiliar
-                        existeUsuario = usuario;
-                        break;
-                    }
-                }
+                Usuario existeUsuario = this.buscarUsuario(nombreUsuarioIngresado);
 
-                // Valido el resultado
+                // Valido el resultado obtenido
                 if(existeUsuario == null){
+
+                    // Si es null, quiere decir que el usuario no existe por lo que mando un mensaje de error
                     System.out.println("ERROR USUARIO INEXISTENTE");
-                } else {
-                    if (existeUsuario.getContrasenia().equals(constraseniaIngresada)) {
-                        // CARGAR EL MENU
-                    }
+
+                    return;
                 }
+                
+                // Si el usuario existe entonces valido ahora la clave
+
+                // Llamo a la funcion validarClave() que me va a devolver un booleano, lo guardo en una variable de tipo boolean
+                boolean sonIguales = this.validarClave(constraseniaIngresada, existeUsuario);
+
+                if (!sonIguales) {
+                    System.out.println("CLAVE INCORRECTA");
+                } else {
+                    System.out.println("LOGUEO EXITOSO!");
+                    // ACA IRIA EL MENU
+                }
+
             }
         }
 
     }
 
-    private Usuario buscarUsuario(){
-        Usuario usuarioABuscar = null;
+    private Usuario buscarUsuario(String nombreUsuario){
 
-        return usuarioABuscar;
+        Usuario usuarioEncontrado = null;
+
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getNombre().equals(nombreUsuario)) {
+                usuarioEncontrado = usuario;
+            }
+        }
+
+        return usuarioEncontrado;
+    }
+
+    private boolean validarClave(String claveIngresada, Usuario usuario){
+
+        boolean sonIguales = false;
+
+        if (claveIngresada.equals(usuario.getContrasenia())) {
+            sonIguales = true;
+        }
+
+        return sonIguales;
     }
 }
