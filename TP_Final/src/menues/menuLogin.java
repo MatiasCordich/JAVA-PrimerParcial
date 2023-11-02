@@ -52,15 +52,16 @@ public class MenuLogin {
 
             while (continuar) {
 
-                // Pido por pantalla la clave de usuario
+                // Pido por pantalla el nombre del usuario
                 System.out.print("Ingrese su nombre de usuario: ");
                 String nombreUsuarioIngresado = sc.next();
-                System.out.print("Ingrese la contrasenia: ");
+
+                // Ingreso la clave del usuario
+                System.out.print("Ingrese su clave: ");
                 String constraseniaIngresada = sc.next();
 
-                // Busco el usuario que ingrese por medio de la terminal
-
-                Usuario existeUsuario = this.buscarUsuario(nombreUsuarioIngresado);
+                // Valido si el usuario que ingrese existe
+                Usuario existeUsuario = this.validarNombreUsuario(nombreUsuarioIngresado);
 
                 // Valido el resultado obtenido
                 if(existeUsuario == null){
@@ -73,12 +74,14 @@ public class MenuLogin {
                 
                 // Si el usuario existe entonces valido ahora la clave
 
-                // Llamo a la funcion validarClave() que me va a devolver un booleano, lo guardo en una variable de tipo boolean
+                // Llamo a la funcion validarClave(), que me va a devolver un booleano, lo guardo en una variable de tipo boolean
                 boolean sonIguales = this.validarClave(constraseniaIngresada, existeUsuario);
 
+                // Si sonIguales es false, entonces muestro un mensaje por pantalla de error
                 if (!sonIguales) {
                     System.out.println("CLAVE INCORRECTA");
                 } else {
+                    // Si son iguales muestro un mensaje de exito y procedo a ir al menu siguiente
                     System.out.println("LOGUEO EXITOSO!");
                     // ACA IRIA EL MENU
                 }
@@ -88,27 +91,37 @@ public class MenuLogin {
 
     }
 
-    private Usuario buscarUsuario(String nombreUsuario){
+    // Funcion para validar la existencia del nombre del usuario 
+    private Usuario validarNombreUsuario(String nombreUsuario){
 
+        // Variable auxiliar para guadar el resultado
         Usuario usuarioEncontrado = null;
 
+        // Recorro la listaUsuarios
         for (Usuario usuario : listaUsuarios) {
-            if (usuario.getNombre().equals(nombreUsuario)) {
+            // Si el nommbre ingresado es igual a algun usuario de la lista lo guardo
+            if (nombreUsuario.equals(usuario.getNombre())) {
                 usuarioEncontrado = usuario;
             }
         }
 
+        // Devuelvo el resultado obtenido
         return usuarioEncontrado;
     }
 
+    // Funcion para validar la clave 
     private boolean validarClave(String claveIngresada, Usuario usuario){
 
+        // Variable auxiliar
         boolean sonIguales = false;
 
+        // Si claveIngresada es igual al usuario existente (del cual obtengo su clave)
+        // Entonces la variable sonIguales pasa a ser true
         if (claveIngresada.equals(usuario.getContrasenia())) {
             sonIguales = true;
         }
 
+        // Devuelvo el valor de la variable sonIguales
         return sonIguales;
     }
 }

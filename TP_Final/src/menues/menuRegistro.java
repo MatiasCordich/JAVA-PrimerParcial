@@ -6,6 +6,7 @@ import java.util.Scanner;
 import modelos.Usuario;
 
 public class menuRegistro {
+
     // Atributos
     private Scanner sc;
     private boolean continuar = true;
@@ -18,6 +19,7 @@ public class menuRegistro {
         this.listaUsuarios = listaUsuarios;
     }
 
+    // Funcion para iniciar el menu de registro
     public void iniciar() {
         while (continuar) {
 
@@ -31,20 +33,22 @@ public class menuRegistro {
             System.out.print("Ingrese su nombre de usuario: ");
             String nombreUsuario = this.sc.next();
 
-            // Primeor valido que no haya un usuario que ya exista con el nombre
-
+            // Primero valido que no haya un usuario que ya exista con el nombre ingresado
             Usuario existeUsuario = this.buscarUsuario(nombreUsuario);
 
             // Valido el resultado obtenido
             if (existeUsuario != null) {
+                // Si el nombre de usuario ya existe entonces salto un mensaje de error
                 System.out.println("EL USUARIO YA EXISTE");
             } else {
-                // Hago el registro de la clave
 
+                // Si el nombre del usuario es nuevo entonces procedo a hacer ahora el registro de la calve
+
+                // Hago el registro de la clave llamando a la funcion registroClave() que me va a devolver un string y ese valor
+                // Lo guardo en una variable
                 String contraseniaUsuario = this.registroClave();
 
                 // Creo un nuevo usuario
-
                 Usuario nuevoUsuario = new Usuario(nombreUsuario, contraseniaUsuario);
 
                 // Guardo ese usuario en la lista
@@ -53,12 +57,10 @@ public class menuRegistro {
                 // Muestro por pantalla un mensaje de registro exitoso
                 System.out.println("REGISTRO EXITOSO!!!");
 
-                // Cambio la variable continuar por el valor false
-
+                // Cambio la variable continuar por el valor false asi salgo del bucle
                 this.continuar = false;
 
                 // Vuelvo a login
-
                 MenuLogin mLogin = new MenuLogin(sc, listaUsuarios);
                 mLogin.iniciar();
             }
@@ -67,6 +69,7 @@ public class menuRegistro {
 
     }
 
+    // Funcion para validar la existencia del nombre del usuario 
     private Usuario buscarUsuario(String nombreUsuario) {
 
         // Variable axiliar para guardar el resultado de la busqueda
@@ -75,10 +78,8 @@ public class menuRegistro {
         // Recorro la lista de Usuarios
         for (Usuario usuario : listaUsuarios) {
 
-            // Si el nombre del usuario de turno de la lista es igual al nombre ingresado
-            // entonces hago lo siguiente
-            if (usuario.getNombre().equals(nombreUsuario)) {
-
+            // Si el nombreIngresado es igual al nombre del usuario de turno de la lista 
+            if (nombreUsuario.equals(usuario.getNombre())) {
                 // Guardo el usuario en la variable de al principio
                 usuarioEncontrado = usuario;
             }
@@ -88,9 +89,10 @@ public class menuRegistro {
         return usuarioEncontrado;
     }
 
+    // Funcion para realizar el registro de la clave del usuario
     private String registroClave() {
 
-        // Variable axiliar para guardar el resultado de la busqueda
+        // Variable axiliar para guardar el resultado una vez que hayamos hecho la clave
         String clave = "";
 
         // Entro en el bucle para realizar el registro de la clave
@@ -104,26 +106,29 @@ public class menuRegistro {
             System.out.print("Vuelva a ingresar su contrasenia: ");
             String contraseniaReingresadaUsuario = this.sc.next();
 
-            // Valido si son iguales con el metodo validarClaves()
+            // Valido si son iguales con el metodo validarClaves(), el resultado va a ser un valor booleano
             boolean sonIguales = this.validarClaves(contraseniaUsuario, contraseniaReingresadaUsuario);
 
             // Si son iguales, es decir, es true
             if (sonIguales) {
-
                 // la variable clave va a guardar la constrasenia
                 clave = contraseniaUsuario;
 
-                // seteo la variable avanzar en false para que salga del bucle
+                // seteo la variable avanzar en false para salir del bucle
                 this.avanzar = false;
             } else {
+
+                // Si sonIguales es false, muestro un mesaje de error y vuelvo a registrar la clave
                 System.out.println("--------------- LAS CLAVES NO COINCIDEN, VUELVA A INTENTARLO ---------------");
             }
 
         }
 
+        // Una vez hecho todo el proceso devuelvo el valor de la clave
         return clave;
     }
 
+    // Valido si ambas claves ingresadas en el registro son iguales
     private boolean validarClaves(String clave, String claveReingresada) {
 
         // Variable donde guardo el valor de la comparacion de las claves
