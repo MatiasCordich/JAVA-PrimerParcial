@@ -1,6 +1,6 @@
 package modelos;
 
-public class Articulo {
+public abstract class Articulo {
 
     // ATRIBUTOS
     private int codigo;
@@ -50,6 +50,17 @@ public class Articulo {
     public double getPrecio() {
         return precio;
     }
+
+    // Metodo toString()
+    public String toString() {
+        return "Articulo [codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio="
+                + precio + "]";
+    }
+
+    // Metodo abstracto 
+    public abstract double getDescuento();
+
+    
 
     
 
